@@ -1,0 +1,11 @@
+*****API Endpoints****
+
+POST /api/offers - Submit a new cash offer request
+
+GET /api/offers - Get all offer requests
+
+GET /api/offers/:id - Get a specific offer by ID
+
+PUT /api/offers/:id/status - Update the status of an offer
+
+DELETE /api/offers/:id - Delete an offer
