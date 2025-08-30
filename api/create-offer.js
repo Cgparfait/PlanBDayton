@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method Not Allowed" });
     }
-    
+
     try {
         const rules = offerValidationRules(req, res)
         for (let rule of rules) {
@@ -94,6 +94,29 @@ module.exports = async (req, res) => {
         });
 
         const savedOffer = await offer.save();
+        // send mail
+        try {
+            const response = await fetch("/api/sendMail", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    email,
+                    propertyAddress,
+                    state,
+                    zip,
+                    sellingReason,
+                    sellingTimeframe,
+                }),
+            });
+
+            const result = await response.json();
+            console.log("Server response:", result);
+        } catch (err) {
+            console.error("Error sending request:", err);
+        }
+
         res.status(201).json({
             message: 'Cash offer request submitted successfully',
             data: savedOffer
