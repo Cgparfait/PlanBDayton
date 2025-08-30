@@ -53,12 +53,16 @@ const offerValidationRules = () => {
 };
 
 module.exports = async (req, res) => {
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method Not Allowed" });
+    }
+    
     try {
         const rules = offerValidationRules(req, res)
         for (let rule of rules) {
             await rule.run(req);
         }
-        
+
         // Check for validation errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
