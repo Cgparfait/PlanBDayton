@@ -96,7 +96,7 @@ module.exports = async (req, res) => {
         const savedOffer = await offer.save();
         // send mail
         try {
-            const response = await fetch("http://216.198.79.1/api/send-mail", {
+            const response = await fetch("https://planbdayton.com/api/send-mail", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
