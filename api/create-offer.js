@@ -24,27 +24,19 @@ const offerValidationRules = () => {
 
         body('propertyAddress')
             .notEmpty()
-            .withMessage('Property address is required')
-            .isLength({ min: 10 })
-            .withMessage('Please enter a complete property address'),
+            .withMessage('Property address is required'),
 
         body('state')
             .notEmpty()
-            .withMessage('State is required')
-            .isLength({ min: 2, max: 2 })
-            .withMessage('Please use the 2-letter state code'),
+            .withMessage('State is required'),
 
         body('zip')
             .notEmpty()
-            .withMessage('ZIP code is required')
-            .isPostalCode('US')
-            .withMessage('Please enter a valid US ZIP code'),
+            .withMessage('ZIP code is required'),
 
         body('sellingReason')
             .notEmpty()
-            .withMessage('Please provide a reason for selling')
-            .isLength({ min: 10 })
-            .withMessage('Please provide more details about your reason for selling'),
+            .withMessage('Please provide a reason for selling'),
 
         body('sellingTimeframe')
             .isIn(['ASAP', 'Within 30 days', 'Within 60 days', 'Not urgent'])
