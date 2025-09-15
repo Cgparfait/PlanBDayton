@@ -7,15 +7,15 @@ const offerValidationRules = () => {
     return [
         body('name')
             .notEmpty()
-            .withMessage('Name is required')
-            .isLength({ min: 2 })
-            .withMessage('Name must be at least 2 characters long'),
+            .withMessage('Name is required'),
+            // .isLength({ min: 2 })
+            // .withMessage('Name must be at least 2 characters long'),
 
         body('phone')
             .notEmpty()
-            .withMessage('Phone number is required')
-            .matches(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)
-            .withMessage('Please enter a valid phone number'),
+            .withMessage('Phone number is required'),
+            // .matches(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)
+            // .withMessage('Please enter a valid phone number'),
 
         body('email')
             .isEmail()
